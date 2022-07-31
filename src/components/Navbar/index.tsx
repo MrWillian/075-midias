@@ -18,9 +18,9 @@ const Navbar = () => {
                     <C.NavLink to="/">
                         <h1>Contato</h1>
                     </C.NavLink>
-                    <C.NavLink to="/">
+                    <div>
                         <C.Button to="/">Entrar</C.Button>
-                    </C.NavLink>
+                    </div>
                 </C.NavLinkContainer>
             </C.Nav>
         </>
