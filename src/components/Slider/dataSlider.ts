@@ -6,17 +6,17 @@ export type EventsType = {
 
 export const dataSlider: EventsType[] = [
     {
-        id: '1',
+        id: 1,
         title: 'Lorem Ipsum',
         subtitle: 'Lorem Ipsum'
     },
     {
-        id: '2',
+        id: 2,
         title: 'Lorem Ipsum',
         subtitle: 'Lorem Ipsum'
     },
     {
-        id: '3',
+        id: 3,
         title: 'Lorem Ipsum',
         subtitle: 'Lorem Ipsum'
     }
