@@ -29,7 +29,7 @@ const Slider = () => {
                 return (
                     <C.Slider 
                         key={obj.id}
-                        isActive={obj.id == index + 1}
+                        isActive={obj.id === index + 1}
                     >
                         <C.Image src={process.env.PUBLIC_URL + `images/img${slideIndex}.jpg`} />
                     </C.Slider>
