@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import EventsSection from '../../components/EventsSection';
 import Navbar from '../../components/Navbar';
 import Slider from '../../components/Slider';
 import useAuth from '../../hooks/useAuth';
@@ -15,6 +16,7 @@ const Home = () => {
             <C.Container>
                 <Slider />
             </C.Container>
+            <EventsSection />
         </>
     );
 }
