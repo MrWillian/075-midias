@@ -11,7 +11,7 @@ const EventsSection = () => {
                 <C.Content>
                     Tenha cobertura total dos seus eventos, garantindo que nenhum momento passará sem ser registrado pelo click de nossas câmeras...
                 </C.Content>
-                <C.ContactLink>
+                <C.ContactLink href="http://contate.me/075-midias" target="_blank">
                     Entre em contato conosco 
                     <FiArrowUpRight />
                 </C.ContactLink>
