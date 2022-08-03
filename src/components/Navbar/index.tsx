@@ -19,7 +19,7 @@ const Navbar = () => {
                         <h1>Contato</h1>
                     </C.NavLink>
                     <div>
-                        <C.Button to="/">Entrar</C.Button>
+                        <C.Button to="/signin">Entrar</C.Button>
                     </div>
                 </C.NavLinkContainer>
             </C.Nav>
