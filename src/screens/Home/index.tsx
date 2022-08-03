@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import ContactSection from '../../components/ContactSection';
 import EventsSection from '../../components/EventsSection';
 import Navbar from '../../components/Navbar';
