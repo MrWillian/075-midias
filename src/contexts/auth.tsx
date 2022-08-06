@@ -1,13 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import { IUser, AuthContextType } from "../@types/auth";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext<AuthContextType | null>(null);
 
-type User = {
-    email: string, password: string
+interface AuthProviderProps {
+    children?: React.ReactNode
 }
 
-export const AuthProvider = () => {
-    const [user, setUser] = useState<User | null>();
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+    const [user, setUser] = useState<IUser | null>();
     
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
@@ -15,7 +16,7 @@ export const AuthProvider = () => {
 
         if (userToken && usersStorage) {
             const hasUser = JSON.parse(usersStorage)?.filter(
-                (user: User) => user.email === JSON.parse(userToken).email
+                (user: IUser) => user.email === JSON.parse(userToken).email
             );
 
             if (hasUser) setUser(hasUser[0]);
@@ -25,7 +26,7 @@ export const AuthProvider = () => {
     const signin = (email: string, password: string) => {
         const usersStorage = JSON.parse(localStorage.getItem("users_db") as string);
 
-        const hasUser = usersStorage?.filter((user: User) => user.email === email);
+        const hasUser = usersStorage?.filter((user: IUser) => user.email === email);
 
         if (hasUser?.length) {
             if (hasUser[0].email === email && hasUser[0].password === password) {
@@ -44,7 +45,7 @@ export const AuthProvider = () => {
     const signup = (email: string, password: string) => {
         const usersStorage = JSON.parse(localStorage.getItem("users_db") as string);
 
-        const hasUser = usersStorage?.filter((user: User) => user.email === email);
+        const hasUser = usersStorage?.filter((user: IUser) => user.email === email);
 
         if (hasUser?.length) return "Já tem uma conta com esse E-mail";
 
@@ -66,10 +67,9 @@ export const AuthProvider = () => {
         localStorage.removeItem("user_token");
     }
 
-    // return { signin, signup, signout };
     return (
-        <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout }}
-        />
+        <AuthContext.Provider value={{ user, signed: !!user, signin, signup, signout }}>
+            {children}
+        </AuthContext.Provider>
     );
 }
