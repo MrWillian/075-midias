@@ -10,9 +10,15 @@ export interface IUser {
     password: string;
 }
 
+export enum ErrorSigninResponse {
+    WrongEmailOrPassword =  "E-mail ou senha incorretos",
+    UserNotFound = "Usuário não cadastrado",
+}
+
 export type AuthContextType = {
-    user?: IUser;
-    signin: (email: string, password: string) => string;
+    user?: IUser | null;
+    signed: boolean;
+    signin: (email: string, password: string) => string | undefined | void;
     signup: (email: string, password: string) => string | undefined | void;
     signout: (id: number) => void;
 };
