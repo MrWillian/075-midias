@@ -19,15 +19,15 @@ const Signin = () => {
             return;
         }
 
-        const response = signin(email, senha);
-
-        console.log(response);
+        signin(email, senha).then((responseMessage) => {
+            alert(responseMessage);
+            navigate("/");
+        });
         // if (response) {
         //     setError(res);
         //     return;
         // }
 
-        navigate("/");
     }
 
     return (
