@@ -24,5 +24,5 @@ export type AuthContextType = {
     signed: boolean;
     signin: (email: string, password: string) => Promise<SuccessSigninResponse | ErrorSigninResponse | undefined>;
     signup: (email: string, password: string) => string | undefined | void;
-    signout: (id: number) => void;
+    signout: () => void;
 };
