@@ -5,7 +5,7 @@ import { authConfig } from "./auth/config";
 
 const app = getApps().length > 0 ? getApps()[0] : initializeApp(authConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 export const logInWithEmailAndPassword = async (email, password) => {
     try {
