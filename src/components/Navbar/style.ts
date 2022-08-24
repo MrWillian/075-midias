@@ -53,3 +53,19 @@ export const Button = styled(Link)`
     color: #FFF;
     text-decoration: none;
 `;
+
+export const btnSignout = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 80px;
+    border: 1px solid #FF0000;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: #FF0000;
+
+    font-size: 0.9rem;
+    color: #FFF;
+    text-decoration: none;
+`;

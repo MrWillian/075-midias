@@ -3,10 +3,10 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import * as C from './styles';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from "../../hooks/useAuth";
+import useAuth from '../../hooks/useAuth';
 
 const Signin = () => {
-    // const { signin } = useAuth();
+    const { signin } = useAuth();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -14,24 +14,25 @@ const Signin = () => {
     const [error, setError] = useState("");
 
     const handleLogin = () => {
-        // if (!email | !senha) {
-        //     setError("Preencha todos os campos");
-        //     return;
-        // }
+        if (!email || !senha) {
+            setError("Preencha todos os campos");
+            return;
+        }
 
-        // const res = signin(email, senha);
-
-        // if (res) {
+        signin(email, senha).then((responseMessage) => {
+            alert(responseMessage);
+            navigate("/");
+        });
+        // if (response) {
         //     setError(res);
         //     return;
         // }
 
-        navigate("/");
     }
 
     return (
         <C.Container>
-            <C.Label>SISTEMA DE LOGIN</C.Label>
+            <C.Label>LOGIN</C.Label>
             <C.Content>
                 <Input
                     type="email"
