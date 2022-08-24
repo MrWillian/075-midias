@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useState } from "react";
-import { IUser, AuthContextType } from "../@types/auth";
+import { IUser, AuthContextType, ErrorSigninResponse, SuccessSigninResponse } from "../@types/auth";
+import { logInWithEmailAndPassword } from "../firebase";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-interface AuthProviderProps {
+interface Props {
     children?: React.ReactNode
 }
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: React.FC<Props> = ({ children }) => {
     const [user, setUser] = useState<IUser | null>();
     
     useEffect(() => {
@@ -23,22 +24,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     }, []);
 
-    const signin = (email: string, password: string) => {
-        const usersStorage = JSON.parse(localStorage.getItem("users_db") as string);
+    const signin = async (email: string, password: string) => {
+        const user = await logInWithEmailAndPassword(email, password);
 
-        const hasUser = usersStorage?.filter((user: IUser) => user.email === email);
-
-        if (hasUser?.length) {
-            if (hasUser[0].email === email && hasUser[0].password === password) {
-                const token = Math.random().toString(36).substring(2);
-                localStorage.setItem("user_token", JSON.stringify({ email, token }));
-                setUser({ email, password });
-                return;
-            } else {
-                return "E-mail ou senha incorretos";
-            }
+        if (user) {
+            const token = Math.random().toString(36).substring(2);
+            localStorage.setItem("user_token", JSON.stringify({ email, token }));
+            setUser({ email, password });
+            return SuccessSigninResponse.Success;
         } else {
-            return "Usuário não cadastrado";
+            return ErrorSigninResponse.UserNotFound;
         }
     };
 
@@ -73,3 +68,5 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         </AuthContext.Provider>
     );
 }
+
+export default AuthProvider;
