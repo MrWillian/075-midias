@@ -1,6 +1,6 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+// import { getFirestore } from "firebase/firestore";
 import { authConfig } from "./auth/config";
 
 const app = getApps().length > 0 ? getApps()[0] : initializeApp(authConfig);
