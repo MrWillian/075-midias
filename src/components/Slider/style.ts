@@ -5,8 +5,8 @@ interface SliderProps  {
 }
 
 export const Container = styled.div`
-    max-width: 700px;
-    height: 500px;
+    max-width: 300px;
+    height: 200px;
     margin: 0rem auto 0;
     position: relative;
     overflow: hidden;
