@@ -7,9 +7,10 @@ type Props = {
     placeholder?: string,
     value?: string | number | readonly string[],
     onChange?: React.ChangeEventHandler<HTMLInputElement>,
+    autoFocus?: boolean
 }
 
-const Input: React.FC<Props> = ({ type, name, placeholder, value, onChange }) => {
+const Input: React.FC<Props> = ({ type, name, placeholder, value, onChange, autoFocus }) => {
     return (
         <C.Input
             value={value}
@@ -17,6 +18,7 @@ const Input: React.FC<Props> = ({ type, name, placeholder, value, onChange }) =>
             onChange={onChange}
             type={type}
             placeholder={placeholder}
+            autoFocus={autoFocus}
         />
     );
 }
