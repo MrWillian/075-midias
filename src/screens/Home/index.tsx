@@ -54,6 +54,16 @@ const Home = () => {
             height: 1000
         }
     ];
+
+    // const listItem = () => {
+    //     storage.ref().child('images/').listAll().then(res => {
+    //         res.items.forEach((item) => {
+    //             setData(arr => [...arr, item.name]);
+    //         })
+    //     }).catch(err => {
+    //         alert(err.message);
+    //     });
+    // }
     
     return (
         <>
