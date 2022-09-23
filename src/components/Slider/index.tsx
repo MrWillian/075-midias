@@ -32,11 +32,11 @@ const Slider = ({images}: ImagesFileType) => {
                 />
             </C.Slider>
             <SliderButton moveSlide={prevSlide} style={{ left: '0' }}>
-                <MdWest color="#C75104" style={{ width: '30', height: '30' }} />
+                <MdWest color="#C75104" style={{ width: '20', height: '20' }} />
             </SliderButton>
             
             <SliderButton moveSlide={nextSlide} style={{ right: '0' }}>
-                <MdEast color="#C75104" style={{ width: '30', height: '30' }} />
+                <MdEast color="#C75104" style={{ width: '20', height: '20' }} />
             </SliderButton>
         </C.Container>
     );
