@@ -106,6 +106,7 @@ const Album = () => {
                     <C.PhotosContainer>
                         <input 
                             type="file" 
+                            name="images"
                             multiple 
                             onChange={handleFileEvent} 
                             accept='image/png, image/jpeg'
