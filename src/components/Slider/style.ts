@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface SliderProps  {
-    isActive?: boolean
-}
-
 export const Container = styled.div`
     max-width: 300px;
     height: 200px;
@@ -19,9 +15,9 @@ export const Image = styled.img`
     object-fit: cover;
 `;
 
-export const Slider = styled.div<SliderProps>`
+export const Slider = styled.div`
     width: 100%;
     height: 100%;
-    opacity: ${p => p.isActive ? 1 : 0};
+    opacity: 1;
     transition: opacity ease-in-out 0.4s;
 `;
