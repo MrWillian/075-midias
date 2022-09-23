@@ -95,14 +95,14 @@ const Album = () => {
                         autoFocus 
                     />
                     <C.WhiteSpace />
-                    <Input
+                    {/* <Input
                         type="text"
                         name="description"
                         placeholder="Digite a descrição do álbum..."
                         value={description}
                         onChange={(e) => [setDescription(e.target.value), setError("")]}
                     />
-                    <C.WhiteSpace />
+                    <C.WhiteSpace /> */}
                     <C.PhotosContainer>
                         <input 
                             type="file" 
