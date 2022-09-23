@@ -88,13 +88,16 @@ const Album = () => {
                 <C.Form onSubmit={handleSubmit}>
                     <Input
                         type="text"
+                        name="name"
                         placeholder="Digite o nome do álbum..."
                         value={name}
                         onChange={(e) => [setName(e.target.value), setError("")]}
+                        autoFocus 
                     />
                     <C.WhiteSpace />
                     <Input
                         type="text"
+                        name="description"
                         placeholder="Digite a descrição do álbum..."
                         value={description}
                         onChange={(e) => [setDescription(e.target.value), setError("")]}
