@@ -62,7 +62,6 @@ const Album = () => {
                 () => {
                     // download url
                     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log('entrou');
                         // console.log('url', url);
                     });
                 }
