@@ -30,7 +30,7 @@ const Navbar = () => {
                             <h1>Contato</h1>
                         </C.NavLink>
                         {user !== undefined ?
-                            <C.NavLink to="/album">
+                            <C.NavLink to="/albumList">
                                 <h1>Albuns</h1>
                             </C.NavLink>
                             : <></>
