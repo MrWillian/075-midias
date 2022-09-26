@@ -83,8 +83,15 @@ const Album = () => {
         <>
             <Navbar />
             <C.Container>
-                <C.Title>Álbum</C.Title>
-                <C.Line />
+                <C.HeaderFormContainer>
+                    <C.TitleContainer>
+                        <C.Title>Álbum</C.Title>
+                        <C.Line />
+                    </C.TitleContainer>
+                    <C.ButtonContainer>
+                        <Button text="Registrar" style={{}} onClick={handleSubmitButton} />
+                    </C.ButtonContainer>
+                </C.HeaderFormContainer>
                 <C.Form onSubmit={handleSubmit}>
                     <Input
                         type="text"
@@ -120,9 +127,7 @@ const Album = () => {
                     }}>
                         <Slider images={uploadedFiles} />
                     </div>
-                    <C.ButtonContainer>
-                        <Button text="Registrar" style={{}} onClick={handleSubmitButton} />
-                    </C.ButtonContainer>
+                    
                 </C.Form>
             </C.Container>
         </>
