@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 300px;
-    height: 200px;
+    max-width: 100%;
+    height: 50vh;
     margin: 0rem auto 0;
     position: relative;
     overflow: hidden;
