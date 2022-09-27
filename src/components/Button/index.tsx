@@ -8,9 +8,9 @@ type Props = {
     style?: React.CSSProperties
 }
 
-const Button: React.FC<Props> = ({ text, onClick, type = "button" }) => {
+const Button: React.FC<Props> = ({ text, onClick, type = "button", style }) => {
     return (
-        <C.Button type={type} onClick={onClick}>
+        <C.Button type={type} onClick={onClick} style={style}>
             {text}
         </C.Button>
     );
