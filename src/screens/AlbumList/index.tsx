@@ -25,15 +25,16 @@ const AlbumList = () => {
     const updateTask = (id: string) => navigate(`/album/${id}`);
 
     const getAlbumData = async () => {
+        var albunsDoc: Album[] = [];
         const querySnapshot = await getDocs(collection(database, "albuns"));
         querySnapshot.forEach((doc) => {
-            var albumDoc: Album = {
+            albunsDoc.push({
                 id: doc.id, 
                 name: doc.data().name,
                 date: doc.data().date.toDate().toLocaleDateString("pt-BR")
-            }
-            setAlbuns([...albuns, albumDoc]);
+            })
         });
+        setAlbuns(albunsDoc);
     }
     
     function deleteTask(id: string) {
