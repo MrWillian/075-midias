@@ -15,6 +15,7 @@ export const HeaderFormContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 50%;
+    margin-top: -200px;
 `;
 
 export const TitleContainer = styled.div`
@@ -49,7 +50,7 @@ export const WhiteSpace = styled.div`
 
 export const PhotosContainer = styled.div`
     max-width: 50%;
-    min-height: 50%;
+    min-height: 40%;
 `;
 
 export const SliderContainer = styled.div`
