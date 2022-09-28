@@ -25,10 +25,10 @@ const ListItem = ({ onChange, onDelete, name, date }: Props) => {
     >
       <div>
         <span style={{fontSize: '22px', color: '#000', fontWeight: '900'}}>
-          {name}&nbsp;
+          {name && <>{name}&nbsp;</>}
         </span>
         <span style={{fontSize: '18px', color: '#000', fontWeight: '900'}}>
-          ({date})
+          {date && <>({date})</>}
         </span>
       </div>
       <div style={{display: 'flex', justifyContent: 'center', margin: '5px 0'}}>
