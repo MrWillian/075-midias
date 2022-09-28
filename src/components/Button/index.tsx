@@ -7,13 +7,25 @@ type Props = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>,
     type?: "button" | "submit" | "reset",
     style?: React.CSSProperties,
-    Icon?: IconType
+    Icon?: IconType,
+    iconSize?: number
 }
 
-const Button: React.FC<Props> = ({ text, onClick, type = "button", style, Icon }) => {
+const Button: React.FC<Props> = ({ text, onClick, type = "button", style, Icon, iconSize }) => {
     return (
-        <C.Button type={type} onClick={onClick} style={style}>
-            {Icon ? <Icon /> : text}
+        <C.Button 
+            type={type} 
+            onClick={onClick} 
+            style={{
+                ...style, 
+                ...{
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center',
+                    padding: '10px',
+                }
+            }}>
+            {Icon ? <Icon size={iconSize} /> : text}
         </C.Button>
     );
 }
