@@ -14,6 +14,7 @@ const RoutesApp = () => {
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/albumList" element={<AlbumList />} />
                     <Route path="/album" element={<Album />} />
+                    <Route path="/album/:id" element={<Album />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>
