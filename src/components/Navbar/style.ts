@@ -60,10 +60,10 @@ export const btnSignout = styled.button`
     justify-content: center;
     height: 100%;
     width: 80px;
-    border: 1px solid #FF0000;
+    border: 1px solid #C75104;
     border-radius: 1rem;
     cursor: pointer;
-    background-color: #FF0000;
+    background-color: #C75104;
 
     font-size: 0.9rem;
     color: #FFF;
