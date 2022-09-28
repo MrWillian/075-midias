@@ -1,62 +1,95 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button';
 import ListItem from './ListItem';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase";
+import { database } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import Navbar from '../../components/Navbar';
+
+type Album = {
+    id: string;
+    name: string;
+    date: string
+}
 
 const AlbumList = () => {
-    const [tasks, setTasks] = useState([]);
+    const [albuns, setAlbuns] = useState<Album[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const allFiles = ref(storage, 'albuns/');
-
-        console.log(allFiles);
+        getAlbumData()
     }, []);
     
-    const addNewAlbum = () => {
-        
-    }
+    const addNewAlbum = () => navigate('/album');
 
-    const listItem = () => {
-        // storage.ref().child('images/').listAll().then(res => {
-        const allFiles = ref(storage, 'albuns/');
+    const updateTask = (id: string) => navigate(`/album/${id}`);
 
-        console.log(allFiles);
-        // .storage().child('albuns').listAll().then(res => {
-        //     res.items.forEach((item) => {
-        //         setData(arr => [...arr, item.name]);
-        //     })
-        // }).catch(err => {
-        //     alert(err.message);
-        // });
+    const getAlbumData = async () => {
+        const querySnapshot = await getDocs(collection(database, "albuns"));
+        querySnapshot.forEach((doc) => {
+            var albumDoc: Album = {
+                id: doc.id, 
+                name: doc.data().name,
+                date: doc.data().date.toDate().toLocaleDateString("pt-BR")
+            }
+            setAlbuns([...albuns, albumDoc]);
+        });
     }
     
-    // function updateTask({target}, index) {
-    //     const itensCopy = Array.from(tasks);
-    //     itensCopy.splice(index, 1, { id: index, value: target.value });
-    //     setTasks(itensCopy);
-    // }
-    
-    // function deleteTask(index) {
-    //     const itensCopy = Array.from(tasks);
-    //     itensCopy.splice(index, 1);
-    //     setTasks(itensCopy);
-    // }
+    function deleteTask(id: string) {
+        const itensCopy = Array.from(albuns);
+        itensCopy.filter(item => item.id !== id);
+        setAlbuns(itensCopy);
+    }
 
     return (
-        <div className="App">
-            <div className="App-header">
-                <Button onClick={addNewAlbum} />
-                {/* {tasks.map(({id, value}, index) => (
-                    <ListItem
-                        key={id}
-                        value={value}
-                        onChange={(event) => updateTask(event, index)}
-                        onDelete={() => deleteTask(index)}
+        <>
+            <Navbar />
+            <div className="App"
+                style={{
+                    display: 'flex',
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    flexDirection: 'column', 
+                    height: '100%', 
+                    width: '100%', 
+                    padding: '30px 0',
+                }}>
+                <div 
+                    className="App-header" 
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        flexDirection: 'column', 
+                        backgroundColor: '#CCC',
+                        borderRadius: '15px',
+                        padding: '10px 0',
+                        height: '50%', 
+                        width: '50%', 
+                        WebkitBoxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
+                        MozBoxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
+                        boxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
+                    }}
+                >
+                    <Button 
+                        onClick={addNewAlbum} 
+                        text="Novo Álbum" 
+                        style={{width: '150px', height: '30px'}} 
+                        color='#C75104'
                     />
-                ))} */}
+                    {albuns.map(({id, name, date}) => (
+                        <ListItem
+                            key={id}
+                            name={name}
+                            date={date}
+                            onChange={() => updateTask(id)}
+                            onDelete={() => deleteTask(id)}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
