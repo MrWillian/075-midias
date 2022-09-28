@@ -34,6 +34,10 @@ export const Line = styled.hr`
     margin: 0 -1.5rem 0 0;
 `;
 
+export const ButtonContainer = styled.div`
+    display: flex;
+`;
+
 export const Form = styled.form`
     min-width: 50%;
     min-height: 50%;
@@ -44,10 +48,12 @@ export const WhiteSpace = styled.div`
 `;
 
 export const PhotosContainer = styled.div`
-    min-width: 25%;
+    max-width: 50%;
     min-height: 50%;
 `;
 
-export const ButtonContainer = styled.div`
-    display: flex;
+export const SliderContainer = styled.div`
+    marginTop: -1.5rem;
+    maxHeight: 200px;
+    maxWidth: 300px;
 `;
