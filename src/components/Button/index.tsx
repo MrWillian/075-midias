@@ -8,10 +8,13 @@ type Props = {
     type?: "button" | "submit" | "reset",
     style?: React.CSSProperties,
     Icon?: IconType,
-    iconSize?: number
+    iconSize?: number,
+    color?: string
 }
 
-const Button: React.FC<Props> = ({ text, onClick, type = "button", style, Icon, iconSize }) => {
+const Button: React.FC<Props> = ({ 
+    text, onClick, type = "button", style, Icon, iconSize, color
+}) => {
     return (
         <C.Button 
             type={type} 
@@ -23,6 +26,7 @@ const Button: React.FC<Props> = ({ text, onClick, type = "button", style, Icon, 
                     justifyContent: 'center', 
                     alignItems: 'center',
                     padding: '10px',
+                    backgroundColor: color
                 }
             }}>
             {Icon ? <Icon size={iconSize} /> : text}
