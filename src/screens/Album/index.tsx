@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import * as C from './style';
 import Slider, { ImageFileType } from '../../components/Slider';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase";
+import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
+import { database, storage } from "../../firebase";
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query } from "firebase/firestore";
 
 const MAX_COUNT = 30;
 
@@ -16,6 +18,31 @@ const Album = () => {
     const [uploadedFiles, setUploadedFiles] = useState<ImageFileType[]>([]);
     const [fileLimit, setFileLimit] = useState(false);
     const [percent, setPercent] = useState(0);
+    let { id } = useParams();
+
+    useEffect(() => {
+        if (id != undefined) {
+            getAlbumById();
+            getPhotosByNameAlbum();
+        }
+    }, [id]);
+
+    const getAlbumById = async () => {
+        const querySnapshot = await getDocs(query(collection(database, "albuns")));
+        querySnapshot.forEach((doc) => {
+            if (doc.id == id) {
+                setName(doc.data().name);
+                setDescription(doc.data().description);
+            }
+        });
+    }
+    
+    const getPhotosByNameAlbum = async () => {
+        listAll(ref(storage, `albuns/${name}`)).then((result) => {
+            console.log('result', result);
+            // setUploadedFiles(result.items);
+        }).catch(err => console.log(err));
+    }
 
     const handleUploadFiles = (files: ImageFileType[]) => {
         const uploaded = [...uploadedFiles];
@@ -58,7 +85,14 @@ const Album = () => {
                     // update progress
                     setPercent(percent);
                 },
-                (err) => console.log('error', err),
+                (error) => {
+                    switch (error.code) {
+                        case 'storage/canceled':
+                            alert('Upload has been canceled');
+                            break;
+                    }
+                    console.log('error', error);
+                },
                 () => {
                     // download url
                     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
@@ -89,7 +123,7 @@ const Album = () => {
                         <C.Line />
                     </C.TitleContainer>
                     <C.ButtonContainer>
-                        <Button text="Registrar" style={{}} onClick={handleSubmitButton} />
+                        <Button text="Registrar" style={{}} onClick={handleSubmitButton} color="#C75104" />
                     </C.ButtonContainer>
                 </C.HeaderFormContainer>
                 <C.Form onSubmit={handleSubmit}>
@@ -102,14 +136,14 @@ const Album = () => {
                         autoFocus 
                     />
                     <C.WhiteSpace />
-                    {/* <Input
+                    <Input
                         type="text"
                         name="description"
                         placeholder="Digite a descrição do álbum..."
                         value={description}
                         onChange={(e) => [setDescription(e.target.value), setError("")]}
                     />
-                    <C.WhiteSpace /> */}
+                    <C.WhiteSpace />
                     <C.PhotosContainer>
                         <input 
                             type="file" 
@@ -121,12 +155,13 @@ const Album = () => {
                         <p></p>
                     </C.PhotosContainer>
                     <div style={{
-                        maxHeight: "200px",
-                        maxWidth: "300px",
-                        marginTop: "-140px",
+                        maxHeight: "50%",
+                        maxWidth: "100%",
+                        marginTop: "-120px",
                     }}>
                         <Slider images={uploadedFiles} />
                     </div>
+                    {/* <p>{percent} "% done"</p> */}
                     
                 </C.Form>
             </C.Container>
