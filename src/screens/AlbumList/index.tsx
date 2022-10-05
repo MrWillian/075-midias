@@ -34,7 +34,7 @@ const AlbumList = () => {
                 date: doc.data().date.toDate().toLocaleDateString("pt-BR")
             })
         });
-        setAlbuns(albunsDoc);
+        setAlbuns(albunsDoc.sort((prev, next) => prev.name.localeCompare(next.name)));
     }
     
     function deleteTask(id: string) {
