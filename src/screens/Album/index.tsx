@@ -5,9 +5,10 @@ import Button from '../../components/Button';
 import * as C from './style';
 import Slider, { ImageFileType } from '../../components/Slider';
 import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
+import { collection, getDocs, query, Timestamp, addDoc } from "firebase/firestore";
 import { database, storage } from "../../firebase";
 import { useParams } from "react-router-dom";
-import { collection, getDocs, query } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const MAX_COUNT = 30;
 
@@ -18,6 +19,7 @@ const Album = () => {
     const [uploadedFiles, setUploadedFiles] = useState<ImageFileType[]>([]);
     const [fileLimit, setFileLimit] = useState(false);
     const [percent, setPercent] = useState(0);
+    const navigate = useNavigate();
     let { id } = useParams();
 
     useEffect(() => {
@@ -110,7 +112,18 @@ const Album = () => {
 
     const handleSubmitButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         const casting = e as unknown;
-        handleSubmit(casting as React.FormEvent<HTMLFormElement>);   
+        handleSubmit(casting as React.FormEvent<HTMLFormElement>);
+        handleSaveToFirebase();
+        alert("Álbum registrado com sucesso!")
+        navigate('/albumList');
+    }
+
+    const handleSaveToFirebase = async () => {
+        const docReference = await addDoc(collection(database, "albuns"), {
+            name: name,
+            description: description,
+            date: Timestamp.fromDate(new Date()),
+        });
     }
 
     return (
@@ -123,7 +136,7 @@ const Album = () => {
                         <C.Line />
                     </C.TitleContainer>
                     <C.ButtonContainer>
-                        <Button text="Registrar" style={{}} onClick={handleSubmitButton} color="#C75104" />
+                        <Button text="Registrar" onClick={handleSubmitButton} color="#C75104" />
                     </C.ButtonContainer>
                 </C.HeaderFormContainer>
                 <C.Form onSubmit={handleSubmit}>
