@@ -14,6 +14,8 @@ type ImagesFileType = {
     images: ImageFileType[];
 }
 
+const NO_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
 const Slider = ({images}: ImagesFileType) => {
     const [slideIndex, setSlideIndex] = useState(0);
 
@@ -21,7 +23,7 @@ const Slider = ({images}: ImagesFileType) => {
     
     const nextSlide = () => slideIndex < images.length - 1 ? setSlideIndex((prev) => prev + 1) : 0;
 
-    const getSrcFromImage = () => images[slideIndex] ? images[slideIndex].src : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+    const getSrcFromImage = () => images[slideIndex] ? images[slideIndex].src : NO_IMAGE;
 
     return (
         <C.Container>
