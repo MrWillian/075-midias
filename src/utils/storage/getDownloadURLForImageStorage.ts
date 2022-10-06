@@ -1,5 +1,5 @@
 import { ref, getDownloadURL } from "firebase/storage";
-import { storage } from "./../firebase";
+import { storage } from "../../firebase";
 
 const getDownloadURLForImageStorage = async (albumName: string, imageName: string) => {
     let downloadedUrl: any;
