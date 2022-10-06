@@ -1,5 +1,5 @@
 import { ImageFileType } from "../components/Slider";
-import getDownloadURLForImageStorage from "./getDownloadURLForImageStorage";
+import getDownloadURLForImageStorage from "./storage/getDownloadURLForImageStorage";
 
 const sanitizeFilesToImageFile = (id: string | undefined, albumName: string, files: any[]) => {
     let sanitizedFiles: any[] = [];
