@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button';
 import ListItem from './ListItem';
-import { database } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database, storage } from "../../firebase";
+import { deleteObject, listAll, ref } from 'firebase/storage';
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Navbar from '../../components/Navbar';
 
@@ -37,10 +38,28 @@ const AlbumList = () => {
         setAlbuns(albunsDoc.sort((prev, next) => prev.name.localeCompare(next.name)));
     }
     
-    function deleteTask(id: string) {
-        const itensCopy = Array.from(albuns);
-        itensCopy.filter(item => item.id !== id);
-        setAlbuns(itensCopy);
+    const deleteTask = async (id: string) => {
+        if (window.confirm('Você tem certeza que deseja deletar este álbum?')) {
+            const albumToDeleteName = albuns.find(album => album.id === id)?.name;
+            if (albumToDeleteName) {
+                await deleteDoc(doc(database, "albuns", id));
+                await deleteFolder(`albuns/${albumToDeleteName}`).then(() => {
+                    alert('Álbum deletado com sucesso!');
+                    setAlbuns(albuns.filter(item => item.id !== id));
+                }).catch(error => alert(`Aconteceu um erro ao tentar deletar o álbum! ${error.message}`));
+            }
+        }
+    }
+
+    const deleteFolder = async (path: string) => {
+        const folderRef = ref(storage, path);
+        const fileList = await listAll(folderRef);
+        const promises = [];
+        for(let item of fileList.items) {
+            promises.push(deleteObject(item));
+        }
+        const result = await Promise.all(promises);
+        return result;
     }
 
     return (
