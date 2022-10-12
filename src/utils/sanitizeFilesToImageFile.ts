@@ -5,10 +5,10 @@ const sanitizeFilesToImageFile = (id: string | undefined, albumName: string, fil
     let sanitizedFiles: any[] = [];
     files.map(async (chosenFile, index) => {
         let url = id === undefined
-            ? URL.createObjectURL(chosenFile) 
-            : await getDownloadURLForImageStorage(albumName, chosenFile.name).then(resultedUrl => resultedUrl);
-
-        return sanitizedFiles.push({
+        ? URL.createObjectURL(chosenFile) 
+        : await getDownloadURLForImageStorage(albumName, chosenFile.name).then(resultedUrl => resultedUrl);
+        
+        sanitizedFiles.push({
             id: index,
             name: chosenFile.name,
             file: chosenFile,

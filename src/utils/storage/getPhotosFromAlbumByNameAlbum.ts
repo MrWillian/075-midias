@@ -4,12 +4,17 @@ import { storage } from "../../firebase";
 import sanitizeFilesToImageFile from "../sanitizeFilesToImageFile";
 
 const getPhotosFromAlbumByNameAlbum = async (id: string | undefined, albumName: string) => {
-    let storedFiles: ImageFileType[] = [];
-    await listAll(ref(storage, `albuns/${albumName}/`)).then((result) => {
-        storedFiles = sanitizeFilesToImageFile(id, albumName, result.items);
-    }).catch(err => console.log(err));
-    
-    return storedFiles;
+    let storedFiles: any[] = [];
+    let sanitizedFiles: ImageFileType[] = [];
+    if (albumName !== "") {
+        await listAll(ref(storage, `albuns/${albumName}/`)).then((result) => {
+            result.items.forEach((item) => {
+                storedFiles.push(item);
+            });
+        }).catch(err => console.log(err));
+        sanitizedFiles = sanitizeFilesToImageFile(id, albumName, storedFiles);
+    }
+    return sanitizedFiles;
 }
 
 export default getPhotosFromAlbumByNameAlbum;
