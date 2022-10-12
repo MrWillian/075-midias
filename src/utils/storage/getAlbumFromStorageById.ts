@@ -10,7 +10,7 @@ const getAlbumFromStorageById = async (id: string | undefined) => {
     const querySnapshot = await getDocs(query(collection(database, "albuns")));
     let albumData: AlbumProps = { name: '', description: '' };
     querySnapshot.forEach((doc) => {
-        if (doc.id == id) {
+        if (doc.id === id) {
             albumData = {
                 name: doc.data().name,
                 description: doc.data().description
