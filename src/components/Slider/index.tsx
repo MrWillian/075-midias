@@ -1,49 +1,44 @@
 import React, { useState } from 'react';
-import { dataSlider } from './dataSlider';
 import * as C from './style';
 import { MdEast, MdWest } from 'react-icons/md';
 import SliderButton from '../SliderButton';
 
-const Slider = () => {
-    const [slideIndex, setSlideIndex] = useState(1);
+export type ImageFileType = {
+    id: number;
+    name?: string;
+    file: Blob;
+    src: string;
+}
 
-    const nextSlide = () => {
-        if (slideIndex !== dataSlider.length) {
-            setSlideIndex(slideIndex + 1);
-        } else if (slideIndex === dataSlider.length) {
-            setSlideIndex(1);
-        }
-    }
+type ImagesFileType = {
+    images: ImageFileType[];
+}
 
-    const prevSlide = () => {
-        if (slideIndex !== 1) {
-            setSlideIndex(slideIndex - 1);
-        } else if (slideIndex === 1) {
-            setSlideIndex(dataSlider.length);
-        }
-    }
+const NO_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
+const Slider = ({images}: ImagesFileType) => {
+    const [slideIndex, setSlideIndex] = useState(0);
+
+    const prevSlide = () => slideIndex > 0 ? setSlideIndex((prev) => prev - 1) : 0;
+    
+    const nextSlide = () => slideIndex < images.length - 1 ? setSlideIndex((prev) => prev + 1) : 0;
+
+    const getSrcFromImage = () => images[slideIndex] ? images[slideIndex].src : NO_IMAGE;
 
     return (
         <C.Container>
-            {dataSlider.map((obj, index) => {
-                return (
-                    <C.Slider 
-                        key={obj.id}
-                        isActive={obj.id === index + 1}
-                    >
-                        <C.Image src={process.env.PUBLIC_URL + `images/img${slideIndex}.jpg`} />
-                    </C.Slider>
-                );
-            })}
-            <SliderButton 
-                moveSlide={nextSlide}
-                style={{ right: '0' }}>
-                <MdEast color="#C75104" style={{ width: '30', height: '30' }} />
+            <C.Slider key={images[slideIndex]?.id ? images[slideIndex]?.id : 0}>
+                <C.Image 
+                    src={getSrcFromImage()} 
+                    alt={images[slideIndex]?.id + 1 > 0 ? `Foto do Evento ${images[slideIndex]?.id + 1}` : ''}
+                />
+            </C.Slider>
+            <SliderButton moveSlide={prevSlide} style={{ left: '0' }}>
+                <MdWest color="#C75104" style={{ width: '20', height: '20' }} />
             </SliderButton>
-            <SliderButton 
-                moveSlide={prevSlide}
-                style={{ left: '0' }}>
-                <MdWest color="#C75104" style={{ width: '30', height: '30' }} />
+            
+            <SliderButton moveSlide={nextSlide} style={{ right: '0' }}>
+                <MdEast color="#C75104" style={{ width: '20', height: '20' }} />
             </SliderButton>
         </C.Container>
     );
