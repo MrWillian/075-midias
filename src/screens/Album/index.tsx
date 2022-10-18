@@ -15,7 +15,6 @@ const MAX_COUNT = 30;
 const Album = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [error, setError] = useState("");
     const [uploadedFiles, setUploadedFiles] = useState<ImageFileType[]>([]);
     const [fileLimit, setFileLimit] = useState(false);
     const [percent, setPercent] = useState(0);
@@ -145,7 +144,7 @@ const Album = () => {
                         name="name"
                         placeholder="Digite o nome do álbum..."
                         value={name}
-                        onChange={(e) => [setName(e.target.value), setError("")]}
+                        onChange={(e) => [setName(e.target.value)]}
                         autoFocus 
                     />
                     <C.WhiteSpace />
@@ -154,7 +153,7 @@ const Album = () => {
                         name="description"
                         placeholder="Digite a descrição do álbum..."
                         value={description}
-                        onChange={(e) => [setDescription(e.target.value), setError("")]}
+                        onChange={(e) => [setDescription(e.target.value)]}
                     />
                     <C.WhiteSpace />
                     <C.PhotosContainer>
