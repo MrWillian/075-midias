@@ -6,6 +6,8 @@ import { deleteObject, listAll, ref } from 'firebase/storage';
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Navbar from '../../components/Navbar';
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 type Album = {
     id: string;
@@ -18,7 +20,7 @@ const AlbumList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getAlbumData()
+        trackPromise(getAlbumData());
     }, []);
     
     const addNewAlbum = () => navigate('/album');
@@ -100,6 +102,7 @@ const AlbumList = () => {
                         style={{width: '150px', height: '30px'}} 
                         color='#C75104'
                     />
+                    <LoadingIndicator />
                     {albuns.map(({id, name, date}) => (
                         <ListItem
                             key={id}
