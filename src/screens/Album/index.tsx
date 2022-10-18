@@ -25,7 +25,7 @@ const Album = () => {
             getAlbumById();
             getPhotosByNameAlbum();
         }
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     const getAlbumById = async () => {
@@ -59,6 +59,7 @@ const Album = () => {
                     return true;
                 }
             }
+            return null;
         });
         if (!limitExceeded) setUploadedFiles(uploaded);
     }
