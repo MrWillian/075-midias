@@ -25,6 +25,8 @@ const AlbumList = () => {
 
     const updateTask = (id: string) => navigate(`/album/${id}`);
 
+    const showAlbum = (id: string) => navigate(`/show-album/${id}`);
+
     const getAlbumData = async () => {
         var albunsDoc: Album[] = [];
         const querySnapshot = await getDocs(collection(database, "albuns"));
@@ -104,6 +106,7 @@ const AlbumList = () => {
                             name={name}
                             date={date}
                             onChange={() => updateTask(id)}
+                            onShow={() => showAlbum(id)}
                             onDelete={() => deleteTask(id)}
                         />
                     ))}
