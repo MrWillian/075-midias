@@ -17,7 +17,6 @@ const Album = () => {
     const [description, setDescription] = useState("");
     const [uploadedFiles, setUploadedFiles] = useState<ImageFileType[]>([]);
     const [fileLimit, setFileLimit] = useState(false);
-    const [percent, setPercent] = useState(0);
     const navigate = useNavigate();
     let { id } = useParams();
 
@@ -83,8 +82,8 @@ const Album = () => {
                 "state_changed",
                 (snapshot) => {
                     const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    console.log(percent);
                     // update progress
-                    setPercent(percent);
                 },
                 (error) => {
                     switch (error.code) {
