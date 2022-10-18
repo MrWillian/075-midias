@@ -115,7 +115,7 @@ const Album = () => {
         handleSubmit(casting as React.FormEvent<HTMLFormElement>);
         handleSaveToFirebase();
         alert("Álbum registrado com sucesso!")
-        navigate('/albumList');
+        navigate('/album-list');
     }
 
     const handleSaveToFirebase = async () => {
