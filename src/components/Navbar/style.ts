@@ -3,7 +3,7 @@ import { NavLink as Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
     background #000;
-    height: 60px;
+    height: 3.6rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -60,10 +60,10 @@ export const btnSignout = styled.button`
     justify-content: center;
     height: 100%;
     width: 80px;
-    border: 1px solid #FF0000;
+    border: 1px solid #C75104;
     border-radius: 1rem;
     cursor: pointer;
-    background-color: #FF0000;
+    background-color: #C75104;
 
     font-size: 0.9rem;
     color: #FFF;
