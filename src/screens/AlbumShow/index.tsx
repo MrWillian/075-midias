@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import Navbar from '../../components/Navbar';
 import { AlbumType, ImageType } from '../../@types/album';
 import * as C from './style';
+import LoadingIndicator from '../../components/LoadingIndicator';
+import { trackPromise } from 'react-promise-tracker';
 
 function sleep(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,11 +25,12 @@ const AlbumShow = () => {
                 setAlbum(albumTemp);
             }
         }
-        getAlbumById().catch(error => console.log(error));
+        trackPromise(getAlbumById().catch(error => console.log(error)));
     }, []);
 
     const handleGetAlbumById = async () => {
         let albumTemp: AlbumType = {};
+        
         const querySnapshot = await getDocs(query(collection(database, "albuns")));
         querySnapshot.forEach(async (doc) => {
             if (doc.id === id) {
@@ -63,6 +66,7 @@ const AlbumShow = () => {
                         : <></>
                     }
                 </C.ImagesContainer>
+                <LoadingIndicator />
             </C.Container>
         </>
     );
