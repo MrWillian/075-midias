@@ -31,7 +31,7 @@ const Album = () => {
     const getAlbumById = async () => {
         const querySnapshot = await getDocs(query(collection(database, "albuns")));
         querySnapshot.forEach((doc) => {
-            if (doc.id == id) {
+            if (doc.id === id) {
                 setName(doc.data().name);
                 setDescription(doc.data().description);
             }
