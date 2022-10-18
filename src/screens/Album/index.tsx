@@ -119,7 +119,7 @@ const Album = () => {
     }
 
     const handleSaveToFirebase = async () => {
-        const docReference = await addDoc(collection(database, "albuns"), {
+        await addDoc(collection(database, "albuns"), {
             name: name,
             description: description,
             date: Timestamp.fromDate(new Date()),
