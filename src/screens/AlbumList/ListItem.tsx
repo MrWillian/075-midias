@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../components/Button';
-import { MdModeEdit, MdRemoveRedEye, MdOutlineDelete } from "react-icons/md";
+import { MdRemoveRedEye, MdOutlineDelete } from "react-icons/md";
 
 type Props = {
     onChange: React.MouseEventHandler<HTMLButtonElement>, 
