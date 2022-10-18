@@ -1,15 +1,16 @@
 import React from 'react';
 import Button from '../../components/Button';
-import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
+import { MdModeEdit, MdRemoveRedEye, MdOutlineDelete } from "react-icons/md";
 
 type Props = {
     onChange: React.MouseEventHandler<HTMLButtonElement>, 
+    onShow: React.MouseEventHandler<HTMLButtonElement>,
     onDelete: React.MouseEventHandler<HTMLButtonElement>, 
     name: string,
     date: string,
 }
 
-const ListItem = ({ onChange, onDelete, name, date }: Props) => {
+const ListItem = ({ onChange, onShow, onDelete, name, date }: Props) => {
   return (
     <div 
       style={{
@@ -32,11 +33,19 @@ const ListItem = ({ onChange, onDelete, name, date }: Props) => {
         </span>
       </div>
       <div style={{display: 'flex', justifyContent: 'center', margin: '5px 0'}}>
-        <Button 
+        {/* <Button 
           text="Editar" 
           onClick={onChange} 
           style={{height: '40px', width: '40px', margin: '0 5px'}}
           Icon={MdModeEdit}
+          iconSize={24}
+          color='#C75104'
+        /> */}
+        <Button 
+          text="Mostrar" 
+          onClick={onShow} 
+          style={{height: '40px', width: '40px', margin: '0 5px'}}
+          Icon={MdRemoveRedEye}
           iconSize={24}
           color='#C75104'
         />
