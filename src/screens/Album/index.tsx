@@ -21,7 +21,7 @@ const Album = () => {
     let { id } = useParams();
 
     useEffect(() => {
-        if (id != undefined) {
+        if (id !== undefined) {
             getAlbumById();
             getPhotosByNameAlbum();
         }
