@@ -26,6 +26,7 @@ const AlbumShow = () => {
             }
         }
         trackPromise(getAlbumById().catch(error => console.log(error)));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleGetAlbumById = async () => {
