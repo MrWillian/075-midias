@@ -3,7 +3,7 @@ import * as C from './style';
 
 const ContactSection = () => {
     return (
-        <C.Container>
+        <C.Container id="contact">
             <C.TextContainer>
                 <C.Title>Contatos</C.Title>
                 <C.Line />
