@@ -5,7 +5,10 @@ import ContactSection from '../../components/ContactSection';
 import EventsSection from '../../components/EventsSection';
 import Navbar from '../../components/Navbar';
 import { database, storage } from '../../firebase';
+import LoadingIndicator from '../../components/LoadingIndicator';
+import { trackPromise } from 'react-promise-tracker';
 import * as C from './style';
+import { sleep } from '../../utils';
 
 type Photos = {
     src: string;
@@ -18,7 +21,11 @@ const Home = () => {
     const [photosToShow, setPhotosToShow] = useState<Photos[]>([]);
 
     useEffect(() => {
-        getAlbunsFromFirestore();
+        const loadingContent = async () => {
+            getAlbunsFromFirestore();
+            await sleep(1500);
+        }
+        trackPromise(loadingContent().catch(error => console.log(error)));
     }, []);
 
     useEffect(() => {
@@ -49,6 +56,7 @@ const Home = () => {
         <>
             <Navbar />
             <C.Container>
+                <LoadingIndicator />
                 {photosToShow ? (
                     <>
                         <C.Row>
