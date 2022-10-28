@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
-import PhotoAlbum from 'react-photo-album';
 import ContactSection from '../../components/ContactSection';
 import EventsSection from '../../components/EventsSection';
 import Navbar from '../../components/Navbar';
@@ -39,7 +38,7 @@ const Home = () => {
     const getPhotos = async (albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
             results.items.forEach((item) => getDownloadURL(item).then((url) => 
-                setPhotos((prev) => [...prev, { width: 100, height: 100, src: url }])
+                setPhotos((prev) => [...prev, { width: 265, height: 265, src: url }])
             ));
         }).catch(error => console.log(error));
     }
@@ -50,7 +49,24 @@ const Home = () => {
         <>
             <Navbar />
             <C.Container>
-                <PhotoAlbum layout="columns" photos={photosToShow} />
+                {photosToShow ? (
+                    <>
+                        <C.Row>
+                            {photosToShow.slice(0, 5).map((photo, index) =>
+                                <C.FigureImage>
+                                    <C.Image key={index} src={photo.src} width={photo.width} height={photo.height} />
+                                </C.FigureImage>
+                            )}
+                        </C.Row>
+                        <C.Row>
+                            {photosToShow.slice(5, 10).map((photo, index) =>
+                                <C.FigureImage>
+                                    <C.Image key={index} src={photo.src} width={photo.width} height={photo.height} />
+                                </C.FigureImage>
+                            )}
+                        </C.Row>
+                    </>
+                ) : null}
             </C.Container>
             <EventsSection />
             <ContactSection />
