@@ -8,10 +8,7 @@ import { AlbumType, ImageType } from '../../@types/album';
 import * as C from './style';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
-
-function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import { sleep } from '../../utils';
 
 const AlbumShow = () => {
     const [album, setAlbum] = useState<AlbumType>({});
