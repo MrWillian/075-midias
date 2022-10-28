@@ -26,7 +26,7 @@ const Navbar = () => {
                         <C.NavLink to="#events">
                             <h1>Eventos</h1>
                         </C.NavLink>
-                        <C.NavLink to="/">
+                        <C.NavLink to="#contact">
                             <h1>Contato</h1>
                         </C.NavLink>
                         {user !== undefined ?
