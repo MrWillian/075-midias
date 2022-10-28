@@ -4,7 +4,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
 
 const EventsSection = () => {
     return (
-        <C.Container>
+        <C.Container id="events">
             <C.TextContainer>
                 <C.Title>Eventos</C.Title>
                 <C.Line />
