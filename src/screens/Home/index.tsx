@@ -63,15 +63,15 @@ const Home = () => {
                     <>
                         <C.Row>
                             {photosToShow.slice(0, 5).map((photo, index) =>
-                                <C.FigureImage>
-                                    <C.Image key={index} src={photo.src} width={photo.width} height={photo.height} />
+                                <C.FigureImage key={index}>
+                                    <C.Image src={photo.src} width={photo.width} height={photo.height} />
                                 </C.FigureImage>
                             )}
                         </C.Row>
                         <C.Row>
                             {photosToShow.slice(5, 10).map((photo, index) =>
-                                <C.FigureImage>
-                                    <C.Image key={index} src={photo.src} width={photo.width} height={photo.height} />
+                                <C.FigureImage key={index}>
+                                    <C.Image src={photo.src} width={photo.width} height={photo.height} />
                                 </C.FigureImage>
                             )}
                         </C.Row>
