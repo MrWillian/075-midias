@@ -23,7 +23,7 @@ const Home = () => {
     useEffect(() => {
         const loadingContent = async () => {
             getAlbunsFromFirestore();
-            await sleep(1500);
+            await sleep(2000);
         }
         trackPromise(loadingContent().catch(error => console.log(error)));
         // eslint-disable-next-line react-hooks/exhaustive-deps
