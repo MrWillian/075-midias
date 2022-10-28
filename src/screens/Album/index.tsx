@@ -82,15 +82,29 @@ const Album = () => {
 
             uploadTask.on(
                 "state_changed",
-                (snapshot) => {
-                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    console.log(percent);
-                    // update progress
-                },
+                () => {},
                 (error) => {
                     switch (error.code) {
                         case 'storage/canceled':
-                            alert('Upload has been canceled');
+                            alert('Upload foi cancelado!');
+                            break;
+                        case 'storage/object-not-found':
+                            alert('Nenhum objeto existe na referência desejada.');
+                            break;
+                        case 'storage/quota-exceeded':
+                            alert('A cota no seu bucket do Cloud Storage foi excedida. Se você estiver no nível gratuito, atualize para um plano pago. Se você estiver em um plano pago, entre em contato com o suporte do Firebase.');
+                            break;
+                        case 'storage/unauthenticated':
+                            alert('O usuário não está autenticado, autentique-se e tente novamente.');
+                            break;
+                        case 'storage/unauthorized':
+                            alert('O usuário não está autorizado a realizar a ação desejada, verifique suas regras de segurança para garantir que estejam corretas.');
+                            break;
+                        case 'storage/invalid-checksum':
+                            alert('O arquivo no cliente não corresponde à soma de verificação do arquivo recebido pelo servidor. Tente fazer o upload novamente.');
+                            break;
+                        default:
+                            alert('Aconteceu um erro ao tentar salvar as fotos do álbum');
                             break;
                     }
                     console.log('error', error);
@@ -113,9 +127,13 @@ const Album = () => {
     const handleSubmitButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         const casting = e as unknown;
         handleSubmit(casting as React.FormEvent<HTMLFormElement>);
-        handleSaveToFirebase();
-        alert("Álbum registrado com sucesso!")
-        navigate('/album-list');
+        handleSaveToFirebase().then(() => {
+            alert("Álbum registrado com sucesso!")
+            navigate('/album-list');
+        }).catch((error) => {
+            console.log(error);
+            alert("Aconteceu algum erro ao tentar salvar o álbum!");
+        });
     }
 
     const handleSaveToFirebase = async () => {
