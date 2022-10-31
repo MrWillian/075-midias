@@ -56,7 +56,7 @@ const Home = () => {
     const getPhotos = async (albumId: string, albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
             results.items.forEach((item) => getDownloadURL(item).then((url) => 
-                setPhotos((prev) => [...prev, { id: albumId, width: 255, height: 265, src: url }])
+                setPhotos((prev) => [...prev, { album: albumName, id: albumId, width: 255, height: 265, src: url }])
             ));
         }).catch(error => console.log(error));
     }
