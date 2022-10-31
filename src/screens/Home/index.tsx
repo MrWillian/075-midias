@@ -47,7 +47,7 @@ const Home = () => {
     const getPhotos = async (albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
             results.items.forEach((item) => getDownloadURL(item).then((url) => 
-                setPhotos((prev) => [...prev, { width: 265, height: 265, src: url }])
+                setPhotos((prev) => [...prev, { width: 255, height: 265, src: url }])
             ));
         }).catch(error => console.log(error));
     }
