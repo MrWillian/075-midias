@@ -15,6 +15,7 @@ import { MdRemoveRedEye } from "react-icons/md";
 
 type Photos = {
     id: string;
+    album: string;
     src: string;
     width: number;
     height: number;
@@ -55,13 +56,20 @@ const Home = () => {
 
     const getPhotos = async (albumId: string, albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
-            results.items.forEach((item) => getDownloadURL(item).then((url) => 
+            results.items.forEach((item) => getDownloadURL(item).then((url) =>
                 setPhotos((prev) => [...prev, { album: albumName, id: albumId, width: 255, height: 265, src: url }])
             ));
         }).catch(error => console.log(error));
     }
 
-    const selectPhotos = () => setPhotosToShow(shuffle(photos).slice(0, 10));
+    const selectPhotos = () => {
+        if (photos.length > 10) {
+            const photosWithoutDemoAlbum = photos.filter(photos => photos.album !== 'Álbum de Demonstração');
+            setPhotosToShow(shuffle(photosWithoutDemoAlbum).slice(0, 10));
+        } else {
+            setPhotosToShow(shuffle(photos).slice(0, 10));
+        }
+    }
 
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
 
