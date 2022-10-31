@@ -8,11 +8,10 @@ import { database, storage } from '../../firebase';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
 import * as C from './style';
-import { sleep } from '../../utils';
+import { sleep, shuffle } from '../../utils';
 import { useNavigate } from "react-router-dom";
 import { Button } from '../../components';
 import { MdRemoveRedEye } from "react-icons/md";
-import shuffle from '../../utils/shuffle';
 
 type Photos = {
     id: string;
