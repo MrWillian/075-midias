@@ -21,10 +21,6 @@ export const Row = styled.div`
     margin: 5px;
 `;
 
-export const FigureImage = styled.figure`
-    overflow: hidden;
-`;
-
 export const Image = styled.img`
     -webkit-transform: scale(1);
 	transform: scale(1);
@@ -34,5 +30,29 @@ export const Image = styled.img`
     &:hover {
         -webkit-transform: scale(1.3);
 	    transform: scale(1.3);
+    }
+`;
+
+export const Caption = styled.div`
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+`;
+
+export const FigureImage = styled.figure`
+    position: relative;
+    overflow: hidden;
+
+    &:hover ${Caption} {
+        opacity: 1;
+    }
+
+    &:hover ${Image} {
+        opacity: 0.3;
     }
 `;
