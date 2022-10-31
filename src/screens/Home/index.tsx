@@ -46,10 +46,8 @@ const Home = () => {
     }, [photos]);
 
     const getAlbunsFromFirestore = () => {
-        let albunsName: string[] = [];
         getDocs(collection(database, "albuns")).then((results) => {
             results.forEach(async (doc) => {
-                albunsName.push(doc.data().name);
                 await getPhotos(doc.id, doc.data().name);
             });
         });
