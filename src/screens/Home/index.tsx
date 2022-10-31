@@ -12,12 +12,19 @@ import { sleep } from '../../utils';
 import { useNavigate } from "react-router-dom";
 import { Button } from '../../components';
 import { MdRemoveRedEye } from "react-icons/md";
+import shuffle from '../../utils/shuffle';
 
 type Photos = {
     id: string;
     src: string;
     width: number;
     height: number;
+}
+
+const shadowStyles = {
+    webkitBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+    mozBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+    boxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)'
 }
 
 const Home = () => {
@@ -28,7 +35,7 @@ const Home = () => {
     useEffect(() => {
         const loadingContent = async () => {
             getAlbunsFromFirestore();
-            await sleep(2000);
+            await sleep(3000);
         }
         trackPromise(loadingContent().catch(error => console.log(error)));
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,15 +64,9 @@ const Home = () => {
         }).catch(error => console.log(error));
     }
 
-    const selectPhotos = () => setPhotosToShow(photos.slice(0, 10));
+    const selectPhotos = () => setPhotosToShow(shuffle(photos).slice(0, 10));
 
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
-
-    const shadowStyles = {
-        webkitBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
-        mozBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
-        boxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)'
-    }
 
     return (
         <>
