@@ -9,8 +9,12 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
 import * as C from './style';
 import { sleep } from '../../utils';
+import { useNavigate } from "react-router-dom";
+import { Button } from '../../components';
+import { MdRemoveRedEye } from "react-icons/md";
 
 type Photos = {
+    id: string;
     src: string;
     width: number;
     height: number;
@@ -19,6 +23,7 @@ type Photos = {
 const Home = () => {
     const [photos, setPhotos] = useState<Photos[]>([]);
     const [photosToShow, setPhotosToShow] = useState<Photos[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadingContent = async () => {
@@ -39,20 +44,22 @@ const Home = () => {
         getDocs(collection(database, "albuns")).then((results) => {
             results.forEach(async (doc) => {
                 albunsName.push(doc.data().name);
-                await getPhotos(doc.data().name);
+                await getPhotos(doc.id, doc.data().name);
             });
         });
     }
 
-    const getPhotos = async (albumName: string) => {
+    const getPhotos = async (albumId: string, albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
             results.items.forEach((item) => getDownloadURL(item).then((url) => 
-                setPhotos((prev) => [...prev, { width: 255, height: 265, src: url }])
+                setPhotos((prev) => [...prev, { id: albumId, width: 255, height: 265, src: url }])
             ));
         }).catch(error => console.log(error));
     }
 
     const selectPhotos = () => setPhotosToShow(photos.slice(0, 10));
+
+    const showAlbum = (id: string) => navigate(`/show-album/${id}`);
 
     return (
         <>
@@ -65,6 +72,9 @@ const Home = () => {
                             {photosToShow.slice(0, 5).map((photo, index) =>
                                 <C.FigureImage key={index}>
                                     <C.Image src={photo.src} width={photo.width} height={photo.height} />
+                                    <C.Caption>
+                                        <Button onClick={() => showAlbum(photo.id)} Icon={MdRemoveRedEye} />
+                                    </C.Caption>
                                 </C.FigureImage>
                             )}
                         </C.Row>
@@ -72,6 +82,9 @@ const Home = () => {
                             {photosToShow.slice(5, 10).map((photo, index) =>
                                 <C.FigureImage key={index}>
                                     <C.Image src={photo.src} width={photo.width} height={photo.height} />
+                                    <C.Caption>
+                                        <Button onClick={() => showAlbum(photo.id)} Icon={MdRemoveRedEye} />                                            
+                                    </C.Caption>
                                 </C.FigureImage>
                             )}
                         </C.Row>
