@@ -21,6 +21,12 @@ type Photos = {
     height: number;
 }
 
+const shadowStyles = {
+    webkitBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+    mozBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+    boxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)'
+}
+
 const Home = () => {
     const [photos, setPhotos] = useState<Photos[]>([]);
     const [photosToShow, setPhotosToShow] = useState<Photos[]>([]);
@@ -61,12 +67,6 @@ const Home = () => {
     const selectPhotos = () => setPhotosToShow(shuffle(photos).slice(0, 10));
 
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
-
-    const shadowStyles = {
-        webkitBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
-        mozBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
-        boxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)'
-    }
 
     return (
         <>
