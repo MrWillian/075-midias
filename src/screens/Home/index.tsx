@@ -61,6 +61,12 @@ const Home = () => {
 
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
 
+    const shadowStyles = {
+        webkitBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+        mozBoxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)',
+        boxShadow: '7px 7px 8px -3px rgba(0,0,0,0.72)'
+    }
+
     return (
         <>
             <Navbar />
@@ -71,9 +77,15 @@ const Home = () => {
                         <C.Row>
                             {photosToShow.slice(0, 5).map((photo, index) =>
                                 <C.FigureImage key={index}>
-                                    <C.Image src={photo.src} width={photo.width} height={photo.height} />
+                                    <C.Image style={shadowStyles} src={photo.src} width={photo.width} height={photo.height} />
                                     <C.Caption>
-                                        <Button onClick={() => showAlbum(photo.id)} Icon={MdRemoveRedEye} />
+                                        <Button
+                                            style={shadowStyles}
+                                            color="#C75104"
+                                            onClick={() => showAlbum(photo.id)} 
+                                            Icon={MdRemoveRedEye}
+                                            iconSize={24}
+                                        />
                                     </C.Caption>
                                 </C.FigureImage>
                             )}
@@ -81,9 +93,15 @@ const Home = () => {
                         <C.Row>
                             {photosToShow.slice(5, 10).map((photo, index) =>
                                 <C.FigureImage key={index}>
-                                    <C.Image src={photo.src} width={photo.width} height={photo.height} />
+                                    <C.Image style={shadowStyles} src={photo.src} width={photo.width} height={photo.height} />
                                     <C.Caption>
-                                        <Button onClick={() => showAlbum(photo.id)} Icon={MdRemoveRedEye} />                                            
+                                        <Button 
+                                            style={shadowStyles}
+                                            color="#C75104"
+                                            onClick={() => showAlbum(photo.id)} 
+                                            Icon={MdRemoveRedEye}
+                                            iconSize={24}
+                                        />
                                     </C.Caption>
                                 </C.FigureImage>
                             )}
