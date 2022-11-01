@@ -13,41 +13,38 @@ const Navbar = () => {
     }
 
     return (
-        <>
-            <C.Nav>
-                <C.Logo>
-                    <img src="../assets/logo.png" alt="logo" height="50" width="100" />
-                </C.Logo>
-                <C.NavLinkContainer>
-                    <>
-                        <C.NavLink to="/">
-                            <h1>Início</h1>
-                        </C.NavLink>
-                        <C.NavLink to="#events">
-                            <h1>Eventos</h1>
-                        </C.NavLink>
-                        <C.NavLink to="#contact">
-                            <h1>Contato</h1>
-                        </C.NavLink>
-                        {user !== undefined ?
-                            <C.NavLink to="/album-list">
-                                <h1>Albuns</h1>
-                            </C.NavLink>
-                            : <></>
-                        }
-                        {user === undefined ?
-                            (<div>
-                                <C.Button to="/signin">Entrar</C.Button>
-                            </div>)
-                        :
-                            (<div>
-                                <C.btnSignout onClick={handleSignout}>Sair</C.btnSignout>
-                            </div>)
-                        }
-                    </>
-                </C.NavLinkContainer>
-            </C.Nav>
-        </>
+        <C.Nav>
+            <C.Logo>
+                <img src="../assets/logo.png" alt="logo" height="100%" width="100%" />
+            </C.Logo>
+            <C.NavLinkContainer>
+                <C.NavLink to="/">
+                    <h1>Início</h1>
+                </C.NavLink>
+                <C.NavLink to="#events">
+                    <h1>Eventos</h1>
+                </C.NavLink>
+                <C.NavLink to="#contact">
+                    <h1>Contato</h1>
+                </C.NavLink>
+                {user !== undefined ?
+                    <C.NavLink to="/album-list">
+                        <h1>Albuns</h1>
+                    </C.NavLink>
+                    : <></>
+                }
+                {user === undefined ?
+                    (<div>
+                        <C.Button to="/signin">Entrar</C.Button>
+                    </div>)
+                :
+                    (<div>
+                        <C.btnSignout onClick={handleSignout}>Sair</C.btnSignout>
+                    </div>)
+                }
+                <C.btnMenuControl className="menu-control">MENU</C.btnMenuControl>
+            </C.NavLinkContainer>
+        </C.Nav>
     );
 }
 
