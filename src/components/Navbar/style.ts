@@ -8,19 +8,34 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 10rem;
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        height: auto;
+    }
 `;
 
 export const NavLinkContainer = styled.nav`
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 2rem;
-    z-index: 10;
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        align-items: center;
+    }
 `;
 
 export const Logo = styled.button`
     border: none;
     cursor: pointer;
     align-items: center;
+
+    @media screen and (max-width: 500px) {
+       display: none;
+    }
 `;
 
 export const NavLink = styled(Link)`
@@ -35,6 +50,13 @@ export const NavLink = styled(Link)`
 
     &.active {
         color: #C75104;
+    }
+
+    @media screen and (max-width: 500px) {
+        border-top: 0.5px solid rgba(255, 255, 255, 0.555);
+        padding: 20px 0;
+        width: 100%;
+        justify-content: center;
     }
 `;
 
@@ -68,4 +90,18 @@ export const btnSignout = styled.button`
     font-size: 0.9rem;
     color: #FFF;
     text-decoration: none;
+`;
+
+export const btnMenuControl = styled.button`
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 7px; 
+    padding: 5px;
+    color: #CCC;
+    font-size: 18px;
+    
+    @media screen and (max-width: 500px) {
+        display: block;
+    }
 `;
