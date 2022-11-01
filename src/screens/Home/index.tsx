@@ -17,8 +17,6 @@ type Photos = {
     id: string;
     album: string;
     src: string;
-    width: number;
-    height: number;
 }
 
 const shadowStyles = {
@@ -57,7 +55,7 @@ const Home = () => {
     const getPhotos = async (albumId: string, albumName: string) => {
         listAll(ref(storage, `albuns/${albumName}`)).then((results) => {
             results.items.forEach((item) => getDownloadURL(item).then((url) =>
-                setPhotos((prev) => [...prev, { album: albumName, id: albumId, width: 255, height: 265, src: url }])
+                setPhotos((prev) => [...prev, { album: albumName, id: albumId, src: url }])
             ));
         }).catch(error => console.log(error));
     }
@@ -74,20 +72,18 @@ const Home = () => {
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
 
     return (
-        <>
+        <C.Container>
             <Navbar />
-            <C.Container>
+            <C.Content>
                 <LoadingIndicator />
                 {photosToShow ? (
-                    <>
+                    <C.PhotosContainer>
                         <C.Row>
                             {photosToShow.slice(0, 5).map((photo, index) =>
                                 <C.FigureImage key={index}>
                                     <C.Image 
                                         style={shadowStyles} 
                                         src={photo.src} 
-                                        width={photo.width} 
-                                        height={photo.height}
                                     />
                                     <C.Caption>
                                         <Button
@@ -107,8 +103,6 @@ const Home = () => {
                                     <C.Image 
                                         style={shadowStyles} 
                                         src={photo.src} 
-                                        width={photo.width} 
-                                        height={photo.height}
                                     />
                                     <C.Caption>
                                         <Button 
@@ -122,12 +116,12 @@ const Home = () => {
                                 </C.FigureImage>
                             )}
                         </C.Row>
-                    </>
+                    </C.PhotosContainer>
                 ) : null}
-            </C.Container>
+            </C.Content>
             <EventsSection />
             <ContactSection />
-        </>
+        </C.Container>
     );
 }
 
