@@ -13,6 +13,14 @@ export const Nav = styled.nav`
         flex-direction: column;
         height: auto;
     }
+
+    @media screen and (max-width: 700px) {
+        padding: 0.3rem 3rem;
+    }
+
+    @media screen and (max-width: 900px) {
+        padding: 0.4rem 5rem;
+    }
 `;
 
 export const NavLinkContainer = styled.nav`
@@ -58,6 +66,10 @@ export const NavLink = styled(Link)`
         width: 100%;
         justify-content: center;
     }
+
+    @media screen and (max-width: 750px) {
+        font-size: 0.6rem;
+    }
 `;
 
 export const Button = styled(Link)`
@@ -74,6 +86,10 @@ export const Button = styled(Link)`
     font-size: 0.9rem;
     color: #FFF;
     text-decoration: none;
+
+    @media screen and (max-width: 750px) {
+        font-size: 0.7rem;
+    }
 `;
 
 export const btnSignout = styled.button`
@@ -90,16 +106,22 @@ export const btnSignout = styled.button`
     font-size: 0.9rem;
     color: #FFF;
     text-decoration: none;
+
+    @media screen and (max-width: 750px) {
+        font-size: 0.7rem;
+    }
 `;
 
 export const btnMenuControl = styled.button`
     display: none;
     position: absolute;
-    right: 10px;
+    right: 30px;
     top: 7px; 
     padding: 5px;
     color: #CCC;
     font-size: 18px;
+    background-color: #000;
+    border: 1px solid #FFF;
     
     @media screen and (max-width: 500px) {
         display: block;
