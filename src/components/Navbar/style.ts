@@ -14,12 +14,20 @@ export const Nav = styled.nav`
         height: auto;
     }
 
-    @media screen and (max-width: 700px) {
-        padding: 0.3rem 3rem;
-    }
-
     @media screen and (max-width: 900px) {
         padding: 0.4rem 5rem;
+    }
+
+    @media screen and (max-width: 700px) {
+        padding: 0.4rem 3rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: 0.4rem 2rem;
+    }
+
+    @media screen and (max-width: 550px) {
+        padding: 0.4rem 0.5rem;
     }
 `;
 
@@ -30,9 +38,9 @@ export const NavLinkContainer = styled.nav`
 
     @media screen and (max-width: 500px) {
         flex-direction: column;
+        align-items: center;
         height: auto;
         width: 100%;
-        align-items: center;
     }
 `;
 
@@ -44,6 +52,11 @@ export const Logo = styled.button`
     @media screen and (max-width: 500px) {
        display: none;
     }
+`;
+
+export const LogoImage = styled.img`
+    height: 100%;
+    width: 100%;
 `;
 
 export const NavLink = styled(Link)`
@@ -89,6 +102,7 @@ export const Button = styled(Link)`
 
     @media screen and (max-width: 750px) {
         font-size: 0.7rem;
+        width: 60px;
     }
 `;
 
@@ -109,6 +123,11 @@ export const btnSignout = styled.button`
 
     @media screen and (max-width: 750px) {
         font-size: 0.7rem;
+        width: 70px;
+    }
+    
+    @media screen and (max-width: 600px) {
+        width: 60px;
     }
 `;
 
