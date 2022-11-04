@@ -140,7 +140,7 @@ export const btnMenuControl = styled.button`
     color: #CCC;
     font-size: 18px;
     background-color: #000;
-    border: 1px solid #FFF;
+    border: 0px;
     
     @media screen and (max-width: 500px) {
         display: block;
