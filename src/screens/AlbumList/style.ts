@@ -47,6 +47,17 @@ export const List = styled.div`
     }
 `;
 
+export const ItemContainer = styled.div`
+    display: flex; 
+    width: 80%; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    webkit-background-clip: padding-box;
+    background-clip: padding-box;
+`;
+
 export const ButtonsActionContainer = styled.div`
     display: flex;
     justify-content: center;
