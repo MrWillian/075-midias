@@ -28,6 +28,7 @@ const shadowStyles = {
 const Home = () => {
     const [photos, setPhotos] = useState<Photos[]>([]);
     const [photosToShow, setPhotosToShow] = useState<Photos[]>([]);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,6 +37,13 @@ const Home = () => {
             await sleep(3000);
         }
         trackPromise(loadingContent().catch(error => console.log(error)));
+        const changeWidth = () => setScreenWidth(window.innerWidth);
+        window.addEventListener('resize', changeWidth);
+
+        return () => {
+            window.removeEventListener('resize', changeWidth);
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -61,15 +69,30 @@ const Home = () => {
     }
 
     const selectPhotos = () => {
+        const quantityOfPhotos = quantityOfPhotosAccorddingScreenWidth();
         if (photos.length > 10) {
             const photosWithoutDemoAlbum = photos.filter(photos => photos.album !== 'Álbum de Demonstração');
-            setPhotosToShow(shuffle(photosWithoutDemoAlbum).slice(0, 10));
+            setPhotosToShow(shuffle(photosWithoutDemoAlbum).slice(0, quantityOfPhotos));
         } else {
-            setPhotosToShow(shuffle(photos).slice(0, 10));
+            setPhotosToShow(shuffle(photos).slice(0, quantityOfPhotos));
         }
     }
 
     const showAlbum = (id: string) => navigate(`/show-album/${id}`);
+
+    const quantityOfPhotosAccorddingScreenWidth = () => {
+        let result = 0;
+        if (screenWidth < 800) {
+            result = 4;
+        } else if (screenWidth < 1050) {
+            result = 6;
+        } else if (screenWidth < 1325) {
+            result = 8;
+        } else {
+            result = 10;
+        }
+        return result;
+    }
 
     return (
         <C.Container>
@@ -79,7 +102,7 @@ const Home = () => {
                 {photosToShow ? (
                     <C.PhotosContainer>
                         <C.Row>
-                            {photosToShow.slice(0, 5).map((photo, index) =>
+                            {photosToShow.slice(0, quantityOfPhotosAccorddingScreenWidth() / 2).map((photo, index) =>
                                 <C.FigureImage key={index}>
                                     <C.Image 
                                         style={shadowStyles} 
@@ -98,7 +121,7 @@ const Home = () => {
                             )}
                         </C.Row>
                         <C.Row>
-                            {photosToShow.slice(5, 10).map((photo, index) =>
+                            {photosToShow.slice(quantityOfPhotosAccorddingScreenWidth() / 2, quantityOfPhotosAccorddingScreenWidth()).map((photo, index) =>
                                 <C.FigureImage key={index}>
                                     <C.Image 
                                         style={shadowStyles} 
