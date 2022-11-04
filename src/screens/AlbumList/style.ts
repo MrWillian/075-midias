@@ -17,8 +17,11 @@ export const Content = styled.div`
     height: 100%; 
     width: 100%; 
     padding: 30px 0;
-`;
 
+    @media screen and (max-width: 500px) {
+        margin: 25px 0;
+    }
+`;
 
 export const List = styled.div`
     display: flex;
@@ -29,8 +32,57 @@ export const List = styled.div`
     border-radius: 15px;
     padding: 10px 0;
     height: 50%; 
-    width: 50%; 
+    width: 75%; 
     webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
     moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.75);
+    gap: 20px;
+
+    @media screen and (max-width: 600px) {
+        width: 90%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 95%;
+    }
+`;
+
+export const ButtonsActionContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+`;
+
+export const NameLabel = styled.span`
+    font-size: 22px;
+    color: #000;
+    font-weight: 900;
+
+    @media screen and (max-width: 400px) {
+        font-size: 18px;
+    }
+    
+    @media screen and (max-width: 300px) {
+        font-size: 12px;
+    }
+`;
+
+export const DateLabel = styled.span`
+    font-size: 18px;
+    color: #000;
+    font-weight: 900;
+    
+    @media screen and (max-width: 400px) {
+        font-size: 14px;
+    }
+
+    @media screen and (max-width: 300px) {
+        font-size: 8px;
+    }
 `;
