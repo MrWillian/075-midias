@@ -70,15 +70,7 @@ const AlbumList = () => {
     return (
         <C.Container>
             <Navbar />
-            <C.Content style={{
-                    display: 'flex',
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    flexDirection: 'column', 
-                    height: '100%', 
-                    width: '100%', 
-                    padding: '30px 0',
-                }}>
+            <C.Content>
                 <C.List>
                     <Button 
                         onClick={addNewAlbum} 
