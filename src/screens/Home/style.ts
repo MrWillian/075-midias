@@ -19,10 +19,6 @@ export const Content = styled.div`
     padding: 0.5rem 0.5rem;
 
     background-color: #CCC;
-
-    @media screen and (max-width: 500px) {
-        height: 40vh;
-    }
 `;
 
 export const PhotosContainer = styled.div`
@@ -37,6 +33,7 @@ export const Row = styled.div`
     align-items: center;
     justify-content: center;
     gap: 5px;
+    margin: 5px 0;
 `;
 
 export const Image = styled.img`
@@ -53,8 +50,13 @@ export const Image = styled.img`
     }
 
     @media screen and (max-width: 500px) {
-        width: 90px;
-        height: 95px;
+        width: 200px;
+        height: 205px;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 150px;
+        height: 155px;
     }
 `;
 
