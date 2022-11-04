@@ -13,18 +13,7 @@ type Props = {
 
 const ListItem = ({ onChange, onShow, onDelete, name, date }: Props) => {
   return (
-    <div 
-      style={{
-        display: 'flex', 
-        width: '80%', 
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        borderBottom: '1px solid rgba(0, 0, 0, 0.5)',
-        WebkitBackgroundClip: 'padding-box',
-        backgroundClip: 'padding-box',
-      }}
-    >
+    <C.ItemContainer>
       <div>
         <C.NameLabel>
           {name && <>{name}&nbsp;</>}
@@ -59,7 +48,7 @@ const ListItem = ({ onChange, onShow, onDelete, name, date }: Props) => {
           color='#C75104'
         />
       </C.ButtonsActionContainer>
-    </div>
+    </C.ItemContainer>
   );
 };
 
