@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# 075 Mídias - Cobertura de Eventos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A 075 Mídias é uma empresa de cobertura de eventos que atua em toda a Bahia, e presta um serviço completo de fotos, filmagens e reportagens para registrar todos os momentos do seu evento.
+E este projeto permite que os clientes da empresa tenham uma vitrine de como é a qualidade do trabalho da 075 Mídias, o administrador do site poderá cadastrar um novo evento, bem como expôr o álbum de fotos para que o trabalho seja divulgado. A página inicial conta com uma galéria de imagens aleatórias, que possibilitam ao cliente selecionar e visualizar os detalhes e todas as fotos do álbum, além de ter as informações de contato para com a empresa. O administrador com login no site, pode listar todos os eventos registrados, além de remover e criar um novo evento. 
 
-## Available Scripts
+![logo](https://user-images.githubusercontent.com/50757994/200387042-9ca58bfc-68b5-49cf-9480-27289ce92753.png)
 
-In the project directory, you can run:
 
-### `npm start`
+## 🚀 Demonstração
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![Vídeo demonstrativo](https://img.youtube.com/vi/xa_XNgKyqwA/0.jpg)](https://youtu.be/xa_XNgKyqwA "075 Mídias - Site")
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠️ Construído com
 
-### `npm test`
+Este projeto foi construído com a Lib React JS e o TypeScript.
+E as soluções Cloud utilizadas foram do Firebase.
+  - Firebase Authentication
+  - Firebase Hosting
+  - Firestore Database
+  - Storage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [React JS](https://pt-br.reactjs.org/) - O framework web usado
+* [TypeScript](https://www.typescriptlang.org/) - Tipagem
+* [Firebase](https://firebase.google.com/) - Soluções de Cloud (Cloud Solutions)
 
-### `npm run build`
+## 🖇️ Colaborando
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fechado para colaborações.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📌 Versão
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nós usamos [SemVer](http://semver.org/) para controle de versão.
 
-### `npm run eject`
+## ✒️ Autores
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **Willian Marciel** - *Trabalho Inicial* - [willian](https://github.com/MrWillian)
