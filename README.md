@@ -3,6 +3,9 @@
 A 075 Mídias é uma empresa de cobertura de eventos que atua em toda a Bahia, e presta um serviço completo de fotos, filmagens e reportagens para registrar todos os momentos do seu evento.
 E este projeto permite que os clientes da empresa tenham uma vitrine de como é a qualidade do trabalho da 075 Mídias, o administrador do site poderá cadastrar um novo evento, bem como expôr o álbum de fotos para que o trabalho seja divulgado. A página inicial conta com uma galéria de imagens aleatórias, que possibilitam ao cliente selecionar e visualizar os detalhes e todas as fotos do álbum, além de ter as informações de contato para com a empresa. O administrador com login no site, pode listar todos os eventos registrados, além de remover e criar um novo evento. 
 
+![logo](https://user-images.githubusercontent.com/50757994/200387042-9ca58bfc-68b5-49cf-9480-27289ce92753.png)
+
+
 ## 🚀 Demonstração
 
 [![Vídeo demonstrativo](https://img.youtube.com/vi/xa_XNgKyqwA/0.jpg)](https://youtu.be/xa_XNgKyqwA "075 Mídias - Site")
