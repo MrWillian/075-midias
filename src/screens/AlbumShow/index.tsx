@@ -50,9 +50,9 @@ const AlbumShow = () => {
     }
 
     return (
-        <>
+        <C.Container>
             <Navbar />
-            <C.Container>
+            <C.Content>
                 <C.HeaderContainer>
                     {album.name ? <C.Title>{album.name}</C.Title> : <></>}
                     {album.description ? <C.Description>{album.description}</C.Description> : <></>}
@@ -65,8 +65,8 @@ const AlbumShow = () => {
                     }
                 </C.ImagesContainer>
                 <LoadingIndicator />
-            </C.Container>
-        </>
+            </C.Content>
+        </C.Container>
     );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as C from './style';
 import Button from '../../components/Button';
 import ListItem from './ListItem';
 import { database, storage } from "../../firebase";
@@ -67,35 +68,10 @@ const AlbumList = () => {
     }
 
     return (
-        <>
+        <C.Container>
             <Navbar />
-            <div className="App"
-                style={{
-                    display: 'flex',
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    flexDirection: 'column', 
-                    height: '100%', 
-                    width: '100%', 
-                    padding: '30px 0',
-                }}>
-                <div 
-                    className="App-header" 
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        flexDirection: 'column', 
-                        backgroundColor: '#CCC',
-                        borderRadius: '15px',
-                        padding: '10px 0',
-                        height: '50%', 
-                        width: '50%', 
-                        WebkitBoxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
-                        MozBoxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
-                        boxShadow: '10px 10px 15px 0px rgba(0,0,0,0.75)',
-                    }}
-                >
+            <C.Content>
+                <C.List>
                     <Button 
                         onClick={addNewAlbum} 
                         text="Novo Álbum" 
@@ -113,9 +89,9 @@ const AlbumList = () => {
                             onDelete={() => deleteTask(id)}
                         />
                     ))}
-                </div>
-            </div>
-        </>
+                </C.List>
+            </C.Content>
+        </C.Container>
     );
 }
 

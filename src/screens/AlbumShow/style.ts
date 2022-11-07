@@ -5,9 +5,16 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    padding: 3rem 0;
 
     background-color: #CCC;
+`;
+
+export const Content = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem 0;
 `;
 
 export const HeaderContainer = styled.div`
@@ -35,21 +42,39 @@ export const Date = styled.h2`
 `;
 
 export const ImagesContainer = styled.div`
-    width: 80em;
+    width: 100vh;
     overflow-x: auto;
     white-space: nowrap;
+    gap: 5px;
+    padding: 10px;
 
-    // @media (max-width: 3300px) {
-    //     width: 150em;
-    // }
+    @media (max-width: 850px) {
+        width: 90vh;
+    }
 
-    // @media (min-width: 3000px) {
-    //     width: 130em;
-    // }
+    @media (max-width: 850px) and (max-width: 1100px) {
+        width: 65vh;
+    }
 
-    // @media (max-width: 2900px) {
-    //     width: 100em;
-    // }
+    @media (max-width: 950px) and (max-width: 1400px) {
+        width: 65vh;
+    }
+
+    @media (max-width: 750px) {
+        width: 80vh;
+    }
+
+    @media (max-width: 650px) {
+        width: 65vh;
+    }
+
+    @media (max-width: 550px) {
+        width: 50vh;
+    }
+
+    @media (max-width: 450px) {
+        width: 40vh;
+    }
 `;
 
 export const Image = styled.img`
@@ -57,23 +82,4 @@ export const Image = styled.img`
     max-height: 50vh;
 
     align-self: flex-start;
-    // @media (max-width: 1100px) {
-    //     max-width: 35vw;
-    //     max-height: 35vh;
-    // }
-
-    // @media (max-width: 1000px) {
-    //     max-width: 30vw;
-    //     max-height: 30vh;
-    // }
-
-    // @media (max-width: 850px) {
-    //     max-width: 25vw;
-    //     max-height: 25vh;
-    // }
-
-    // @media (max-width: 750px) {
-    //     max-width: 20vw;
-    //     max-height: 20vh;
-    // }
 `;
