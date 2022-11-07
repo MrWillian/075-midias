@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import * as C from './style';
-import Button from '../../components/Button';
+import { Button, Navbar, LoadingIndicator } from '../../components';
 import ListItem from './ListItem';
 import { database, storage } from "../../firebase";
 import { deleteObject, listAll, ref } from 'firebase/storage';
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import Navbar from '../../components/Navbar';
 import { trackPromise } from 'react-promise-tracker';
-import LoadingIndicator from '../../components/LoadingIndicator';
 
 type Album = {
     id: string;
