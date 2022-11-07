@@ -48,6 +48,7 @@ export const Logo = styled.button`
     border: none;
     cursor: pointer;
     align-items: center;
+    background-color: #000;
 
     @media screen and (max-width: 500px) {
        display: none;
