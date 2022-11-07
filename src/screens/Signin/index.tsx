@@ -22,11 +22,6 @@ const Signin = () => {
             alert(responseMessage);
             navigate("/");
         });
-        // if (response) {
-        //     setError(res);
-        //     return;
-        // }
-
     }
 
     return (
@@ -47,12 +42,6 @@ const Signin = () => {
                 />
                 <C.LabelError>{error}</C.LabelError>
                 <Button text="Entrar" onClick={handleLogin} />
-                {/* <C.LabelSignup>
-                    Não tem uma conta?
-                    <C.Strong>
-                        <Link to="/signup">&nbsp;Registre-se</Link>
-                    </C.Strong>
-                </C.LabelSignup> */}
                     <C.Strong>
                         <Link to="/">Retornar</Link>
                     </C.Strong>
