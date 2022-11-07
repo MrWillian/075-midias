@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import { Navbar, Input, Button } from '../../components';
 import * as C from './style';
 import Slider, { ImageFileType } from '../../components/Slider';
 import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";

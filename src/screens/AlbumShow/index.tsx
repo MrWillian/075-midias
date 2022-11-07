@@ -3,10 +3,9 @@ import { collection, getDocs, query } from 'firebase/firestore';
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
 import { database, storage } from '../../firebase';
 import { useParams } from "react-router-dom";
-import Navbar from '../../components/Navbar';
+import { Navbar, LoadingIndicator } from '../../components';
 import { AlbumType, ImageType } from '../../@types/album';
 import * as C from './style';
-import LoadingIndicator from '../../components/LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
 import { sleep } from '../../utils';
 

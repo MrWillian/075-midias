@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
-import ContactSection from '../../components/ContactSection';
-import EventsSection from '../../components/EventsSection';
-import Navbar from '../../components/Navbar';
+import { ContactSection, EventsSection, Navbar, LoadingIndicator, Button} from '../../components';
 import { database, storage } from '../../firebase';
-import LoadingIndicator from '../../components/LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
 import * as C from './style';
 import { sleep, shuffle } from '../../utils';
 import { useNavigate } from "react-router-dom";
-import { Button } from '../../components';
 import { MdRemoveRedEye } from "react-icons/md";
 
 type Photos = {
