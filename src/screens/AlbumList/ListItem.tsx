@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../components/Button';
 import { MdRemoveRedEye, MdOutlineDelete } from "react-icons/md";
+import * as C from './style';
 
 type Props = {
     onChange: React.MouseEventHandler<HTMLButtonElement>, 
@@ -12,27 +13,16 @@ type Props = {
 
 const ListItem = ({ onChange, onShow, onDelete, name, date }: Props) => {
   return (
-    <div 
-      style={{
-        display: 'flex', 
-        width: '80%', 
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        borderBottom: '1px solid rgba(0, 0, 0, 0.5)',
-        WebkitBackgroundClip: 'padding-box',
-        backgroundClip: 'padding-box',
-      }}
-    >
+    <C.ItemContainer>
       <div>
-        <span style={{fontSize: '22px', color: '#000', fontWeight: '900'}}>
+        <C.NameLabel>
           {name && <>{name}&nbsp;</>}
-        </span>
-        <span style={{fontSize: '18px', color: '#000', fontWeight: '900'}}>
+        </C.NameLabel>
+        <C.DateLabel>
           {date && <>({date})</>}
-        </span>
+        </C.DateLabel>
       </div>
-      <div style={{display: 'flex', justifyContent: 'center', margin: '5px 0'}}>
+      <C.ButtonsActionContainer>
         {/* <Button 
           text="Editar" 
           onClick={onChange} 
@@ -57,8 +47,8 @@ const ListItem = ({ onChange, onShow, onDelete, name, date }: Props) => {
           iconSize={24}
           color='#C75104'
         />
-      </div>
-    </div>
+      </C.ButtonsActionContainer>
+    </C.ItemContainer>
   );
 };
 

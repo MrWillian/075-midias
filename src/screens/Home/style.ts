@@ -5,10 +5,25 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+`;
+
+export const Content = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height: 100vh;
+    width: 100%;
     padding: 0.5rem 0.5rem;
 
     background-color: #CCC;
+`;
+
+export const PhotosContainer = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Title = styled.h2``;
@@ -18,7 +33,7 @@ export const Row = styled.div`
     align-items: center;
     justify-content: center;
     gap: 5px;
-    margin: 5px;
+    margin: 5px 0;
 `;
 
 export const Image = styled.img`
@@ -26,10 +41,22 @@ export const Image = styled.img`
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
+    width: 255px;
+    height: 265px;
 
     &:hover {
         -webkit-transform: scale(1.3);
 	    transform: scale(1.3);
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 200px;
+        height: 205px;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 150px;
+        height: 155px;
     }
 `;
 
